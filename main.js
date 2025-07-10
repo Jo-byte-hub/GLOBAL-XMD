@@ -249,7 +249,7 @@ module.exports = qasim = async (qasim, m, msg, store, groupCache) => {
 			
 			// Anti Link Group
 			if (db.groups[m.chat].antilink && !isCreator && m.isBotAdmin && !m.isAdmin) {
-				if (budy.match('chat.whatsapp.com/')) {
+				if (budy.match('https:/')) {
 					await qasim.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.id, participant: m.sender }})
 					await qasim.relayMessage(m.chat, { extendedTextMessage: { text: `Detected @${m.sender.split('@')[0]} Sending Group Link\nSorry Link Must Be Removed..`, contextInfo: { mentionedJid: [m.key.participant], isForwarded: true, forwardingScore: 1, quotedMessage: { conversation: '*Anti Link❗*'}, ...m.key }}}, {})
 				}
